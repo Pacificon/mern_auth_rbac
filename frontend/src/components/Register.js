@@ -15,7 +15,8 @@ const Register = () => {
     try {
       const res = await api.post('/auth/register', form);
       alert('Registration successful!');
-      navigate('/login'); // Redirect to login after successful registration
+      // Redirect to the Welcome page after successful registration
+      navigate('/welcome', { state: { name: form.name, role: form.role } });
     } catch (error) {
       alert(error.response?.data?.message || 'Registration failed');
     }
